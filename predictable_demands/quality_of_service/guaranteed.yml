@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: guaranteed
+  name: guaranteed
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: guaranteed
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: guaranteed
+    spec:
+      containers:
+      - image: nginx:1.23
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi

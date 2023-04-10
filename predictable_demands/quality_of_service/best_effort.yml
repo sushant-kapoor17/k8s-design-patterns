@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: best-effort
+  name: best-effort
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: best-effort
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: best-effort
+    spec:
+      containers:
+      - image: nginx:1.23
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
