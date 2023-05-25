@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: non-critical-app
+  name: non-critical-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: non-critical-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: non-critical-app
+    spec:
+      containers:
+      - image: nginx:1.23
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: 
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits: 
+            cpu: 200m
+            memory: 512Mi
+      priorityClassName: non-critical-apps
+status: {}

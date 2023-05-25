@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: non-critical-apps-pdb
+spec:
+  minAvailable: 3
+  selector:
+    matchLabels:
+      app: non-critical-app
